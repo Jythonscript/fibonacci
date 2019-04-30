@@ -4,10 +4,15 @@
 int fib(int n);
 int fib2(int n);
 
-int main() {
+int main(int argc, char **argv) {
 
 	//printf("%d\n", fib(35));
-	fib2(35);
+	if (argc > 1) {
+		printf("%d\n", fib2(atoi(argv[1])));
+	}
+	else {
+		printf("%d\n", fib2(10));
+	}
 	return 0;
 }
 
@@ -24,14 +29,25 @@ int fib(int n) {
 	return fib(n-1) + fib(n-2);
 }
 
+//return nth item in the fibonnacci sequence, using dynamic programming
 int fib2(int n) {
 	
 	//generate list of fib items that will be referenced multiple times
-	int *fibs = malloc(sizeof(int) * n);
-	printf("%ld\n%ld\n", sizeof(int), sizeof(&fibs));
-	for (int i = 0; i < 40; i++) {
-		printf("%d\t", fibs[i] - fibs[i] + i);
+	int *fibs = (int *) calloc(n, sizeof(int)); // allocate n ints
+
+	//set initial values
+	fibs[0] = 0;
+	fibs[1] = 1;
+	if (n <= 2) { // edge case for low index
+		return fibs[n-1];
 	}
-	return 0;
+
+	int i;
+	for (i = 2; i < n; i++) {
+		fibs[i] = fibs[i-1] + fibs[i-2]; // generate next fib value
+	}
+
+	free(fibs); // free fibs from memory
+	return fibs[n-1];
 }
 
