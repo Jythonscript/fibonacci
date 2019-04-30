@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
 		// sequence number to find
 		int count = atoi(argv[1]);
 		// allocate "count" ulls
-		unsigned long long *fibs = (unsigned long long *) calloc(count, sizeof(unsigned long long)); 
+		unsigned long long *fibs = (unsigned long long *) calloc(count + 1, sizeof(unsigned long long)); 
 		// print result
 		printf("%llu\n", fib2(count, fibs));
 		// free fibs from memory
@@ -46,21 +46,19 @@ int fib(int n) {
 //return nth item in the fibonnacci sequence, using dynamic programming
 unsigned long long fib2(int n, unsigned long long *fibs) {
 	
-	//generate list of fib items that will be referenced multiple times
-
 	//set initial values
 	fibs[0] = 0;
 	fibs[1] = 1;
-	if (n <= 2) { // edge case for low index
-		return fibs[n-1];
+	if (n < 2) { // edge case for low index
+		return fibs[n];
 	}
 
 	int i;
-	for (i = 2; i < n; i++) {
+	for (i = 2; i <= n; i++) {
 		fibs[i] = fibs[i-1] + fibs[i-2]; // generate next fib value
 	}
 
 	//return result
-	return fibs[n-1];
+	return fibs[n];
 }
 
