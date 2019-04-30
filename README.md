@@ -1,6 +1,6 @@
-# fibonacci
+# Fibonacci
 Generate items in the fibonacci sequence
-### To compile
+### To compile (C)
 `make`
 ### Additional notes
-This program can calculate up to the 93th item in the fibonacci sequence accurately on a 64-bit system.
+This C program can calculate up to the 93th item in the fibonacci sequence accurately on a 64-bit system.
