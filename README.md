@@ -1,6 +1,11 @@
 # Fibonacci
 Generate items in the fibonacci sequence
-### To compile (C)
-`make`
+### To run (C)
+```
+make
+./main (term number here)
+```
+### To run (python 3)
+`./main.py (term number here)`
 ### Additional notes
 This C program can calculate up to the 93th item in the fibonacci sequence accurately on a 64-bit system.
