@@ -8,10 +8,10 @@ int main(int argc, char **argv) {
 
 	//printf("%d\n", fib(35));
 	if (argc > 1) {
-		printf("%d\n", fib2(atoi(argv[1])));
+		printf("%llu\n", fib2(atoi(argv[1])));
 	}
 	else {
-		printf("%d\n", fib2(10));
+		printf("%llu\n", fib2(10));
 	}
 	return 0;
 }
@@ -33,7 +33,7 @@ int fib(int n) {
 int fib2(int n) {
 	
 	//generate list of fib items that will be referenced multiple times
-	int *fibs = (int *) calloc(n, sizeof(int)); // allocate n ints
+	unsigned long long *fibs = (unsigned long long *) calloc(n, sizeof(unsigned long long)); // allocate n ulls
 
 	//set initial values
 	fibs[0] = 0;
