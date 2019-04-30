@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 int fib(int n);
-int fib2(int n);
+unsigned long long fib2(int n);
 
 int main(int argc, char **argv) {
 
@@ -31,7 +31,7 @@ int fib(int n) {
 }
 
 //return nth item in the fibonnacci sequence, using dynamic programming
-int fib2(int n) {
+unsigned long long fib2(int n) {
 	
 	//generate list of fib items that will be referenced multiple times
 	unsigned long long *fibs = (unsigned long long *) calloc(n, sizeof(unsigned long long)); // allocate n ulls
