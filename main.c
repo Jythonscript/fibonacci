@@ -3,25 +3,38 @@
 #include <stdint.h>
 
 int fib(int n);
-unsigned long long fib2(int n);
+unsigned long long fib2(int n, unsigned long long *fibs);
 
 int main(int argc, char **argv) {
 
-	//printf("%d\n", fib(35));
-	if (argc > 1) {
-		printf("%llu\n", fib2(atoi(argv[1])));
+	if (argc > 1) { // check for argument of which number in sequence to find
+
+		// sequence number to find
+		int count = atoi(argv[1]);
+		// allocate "count" ulls
+		unsigned long long *fibs = (unsigned long long *) calloc(count, sizeof(unsigned long long)); 
+		// print result
+		printf("%llu\n", fib2(count, fibs));
+		// free fibs from memory
+		free(fibs);
 	}
-	else {
-		printf("%llu\n", fib2(10));
+	else { // default case, find 10th number in sequence
+		
+		// allocate 10 ulls
+		unsigned long long *fibs = (unsigned long long *) calloc(10, sizeof(unsigned long long)); 
+		// print result
+		printf("%llu\n", fib2(10, fibs));
+		// free fibs from memory
+		free(fibs);
 	}
 	return 0;
 }
 
 /*
- * 1 1 2 3 5 8 13
+ * 0 1 1 2 3 5 8 13
  */
 
-//return nth item in the fibonnacci sequence
+//return nth item in the fibonacci sequence
 int fib(int n) {
 
 	if (n <= 2) {
@@ -31,10 +44,9 @@ int fib(int n) {
 }
 
 //return nth item in the fibonnacci sequence, using dynamic programming
-unsigned long long fib2(int n) {
+unsigned long long fib2(int n, unsigned long long *fibs) {
 	
 	//generate list of fib items that will be referenced multiple times
-	unsigned long long *fibs = (unsigned long long *) calloc(n, sizeof(unsigned long long)); // allocate n ulls
 
 	//set initial values
 	fibs[0] = 0;
@@ -48,7 +60,7 @@ unsigned long long fib2(int n) {
 		fibs[i] = fibs[i-1] + fibs[i-2]; // generate next fib value
 	}
 
-	free(fibs); // free fibs from memory
+	//return result
 	return fibs[n-1];
 }
 
