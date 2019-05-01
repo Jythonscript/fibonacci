@@ -18,4 +18,7 @@ def fib2(n):
 
     return fibs[n]
 
-print(fib2(int(sys.argv[1])))
+if len(sys.argv) > 1:
+    print(fib2(int(sys.argv[1])))
+else:
+    print(fib2(0))

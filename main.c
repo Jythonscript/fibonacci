@@ -18,12 +18,12 @@ int main(int argc, char **argv) {
 		// free fibs from memory
 		free(fibs);
 	}
-	else { // default case, find 10th number in sequence
+	else { // default case, find 0th number in sequence
 		
 		// allocate 10 ulls
-		unsigned long long *fibs = (unsigned long long *) calloc(10, sizeof(unsigned long long)); 
+		unsigned long long *fibs = (unsigned long long *) calloc(1, sizeof(unsigned long long)); 
 		// print result
-		printf("%llu\n", fib2(10, fibs));
+		printf("%llu\n", fib2(0, fibs));
 		// free fibs from memory
 		free(fibs);
 	}
