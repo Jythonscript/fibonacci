@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
  * 0 1 1 2 3 5 8 13
  */
 
-//return nth item in the fibonacci sequence
+// return nth item in the fibonacci sequence
 int fib(int n) {
 
 	if (n <= 2) {
@@ -43,22 +43,20 @@ int fib(int n) {
 	return fib(n-1) + fib(n-2);
 }
 
-//return nth item in the fibonnacci sequence, using dynamic programming
+// return nth item in the fibonacci sequence, using dynamic programming
 unsigned long long fib2(int n, unsigned long long *fibs) {
 	
-	//set initial values
+	// set initial values
 	fibs[0] = 0;
 	fibs[1] = 1;
 	if (n < 2) { // edge case for low index
 		return fibs[n];
 	}
 
-	int i;
-	for (i = 2; i <= n; i++) {
+	for (int i = 2; i <= n; i++) {
 		fibs[i] = fibs[i-1] + fibs[i-2]; // generate next fib value
 	}
 
-	//return result
-	return fibs[n];
+	return fibs[n]; // return nth item in fibonacci sequence
 }
 
